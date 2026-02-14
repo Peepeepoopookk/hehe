@@ -1,42 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For My Love ❤️</title>
 
 <style>
+
 body {
-background-color: pink;
-text-align: center;
-font-family: Arial;
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, #ff4f81 0%, #ff1e56 40%, #8b0000 100%);
+}
+
+/* Glowing heart background */
+body::before {
+    content: "❤";
+    position: fixed;
+    font-size: 600px;
+    color: rgba(255,255,255,0.08);
+    animation: glow 3s infinite alternate ease-in-out;
+    z-index: 0;
+}
+
+@keyframes glow {
+    from {
+        transform: scale(1);
+        text-shadow: 0 0 50px rgba(255,255,255,0.2);
+    }
+    to {
+        transform: scale(1.1);
+        text-shadow: 0 0 120px rgba(255,255,255,0.5);
+    }
+}
+
+/* Main content box */
+.container {
+    position: relative;
+    z-index: 1;
+    background: rgba(0,0,0,0.6);
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 1000px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.3);
 }
 
 h1 {
-margin-top: 100px;
-color: white;
+    text-align: center;
+    font-size: 50px;
 }
 
-button {
-padding: 15px;
-font-size: 20px;
-border-radius: 10px;
-border: none;
+.split {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
+
+.left, .right {
+    flex: 1;
+    min-width: 300px;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.poem {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.music-box {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    text-align: center;
+}
+
 </style>
 
 </head>
-
 <body>
 
-<h1>I made this for you ❤️</h1>
+<div class="container">
 
-<button onclick="showLove()">
-Click here
-</button>
+<h1>For You ❤️</h1>
+
+<div class="split">
+
+<div class="left">
+<h2>Our Memories 📸</h2>
+
+<div class="gallery">
+
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+
+</div>
+
+</div>
+
+<div class="right">
+
+<h2>My Poem For You ✨</h2>
+
+<div class="poem">
+
+Replace this with your own poem.<br>
+Every word you write will appear here.<br>
+Make it personal. Make it beautiful. ❤️
+
+</div>
+
+<div class="music-box">
+
+<h3>Our Song 🎵</h3>
+
+<audio id="music" autoplay loop controls>
+<source src="song.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 <script>
-function showLove() {
-alert("You mean everything to me ❤️");
-}
+// Try to force autoplay (some browsers require interaction)
+window.onload = function() {
+    const music = document.getElementById("music");
+    music.play().catch(() => {
+        console.log("Autoplay blocked by browser until interaction.");
+    });
+};
 </script>
 
 </body>
